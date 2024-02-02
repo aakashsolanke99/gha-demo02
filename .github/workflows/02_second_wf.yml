@@ -1,5 +1,5 @@
 name: second Workflow
-on: 
+on:
     push:
         branches:
             - main
@@ -12,6 +12,14 @@ jobs:
             - name: print gretings
               run: echo Hello World
             - name: Output event data
-              run: echo "${{toJson(github.event)}}"
+              run: echo "${{toJson(github.event)}}"  
+            - name: get code
+              uses: actions/checkout@v4
+            - name: Install Dependencies
+              run: npm ci
+            - name: Test code
+              run: npm run test
+
+             
                   
    
